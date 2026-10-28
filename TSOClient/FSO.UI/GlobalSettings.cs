@@ -122,6 +122,8 @@ namespace FSO.Client
             { "ArchiveClientGUID", "" },
             { "TS1FreeWill", "true" },
             { "TS1ClassicUI", "false" }, //Simitone: the original Windows control panel art
+            { "TS1SimInBackground", "true" }, //Simitone: keep playing while the window is in the background
+            { "TS1AutoCenter", "true" }, //Simitone: centre the camera on special events
         };
 
         public override Dictionary<string, string> DefaultValues
@@ -200,6 +202,8 @@ namespace FSO.Client
 
         public bool TS1FreeWill { get; set; }
         public bool TS1ClassicUI { get; set; }
+        public bool TS1SimInBackground { get; set; }
+        public bool TS1AutoCenter { get; set; }
 
         public static int TARGET_COMPAT_STATE = 2;
     }

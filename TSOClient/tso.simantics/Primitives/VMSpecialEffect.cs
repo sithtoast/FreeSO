@@ -6,13 +6,18 @@ namespace FSO.SimAntics.Primitives
 {
     public class VMSpecialEffect : VMPrimitiveHandler
     {
+        /// <summary>
+        /// TS1's Auto-Centering option: when off, special events don't move the camera.
+        /// </summary>
+        public static bool AutoCenter = true;
+
         public override VMPrimitiveExitCode Execute(VMStackFrame context, VMPrimitiveOperand args)
         {
             //string table 305 used by this primitive for screenshot caption
             var operand = (VMSpecialEffectOperand)args;
             if (context.VM.TS1 && VM.UseWorld)
             {
-                if (((byte)operand.Flags & (1<<3)) > 0) context.VM.Context.World.CenterTo(context.StackObject.WorldUI);
+                if (((byte)operand.Flags & (1<<3)) > 0 && AutoCenter) context.VM.Context.World.CenterTo(context.StackObject.WorldUI);
             }
             return VMPrimitiveExitCode.GOTO_TRUE;
         }
