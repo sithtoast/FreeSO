@@ -124,6 +124,12 @@ namespace FSO.Client
             { "TS1ClassicUI", "false" }, //Simitone: the original Windows control panel art
             { "TS1SimInBackground", "true" }, //Simitone: keep playing while the window is in the background
             { "TS1AutoCenter", "true" }, //Simitone: centre the camera on special events
+            { "TS1TerrainDetail", "2" }, //Simitone: grass detail, 0 low to 2 high
+            { "TS1CharacterDetail", "2" }, //Simitone: lights shading the Sims, 0 low to 2 high
+            { "TS1QuickTips", "false" }, //Simitone: help popups that don't pause the game
+            { "TS1AutoSnapshot", "false" }, //Simitone: photograph special events for the family album
+            { "TS1LivePIP", "false" }, //Simitone: show special events in a picture in picture window
+            { "TS1ExportHTML", "false" }, //Simitone: write the family web pages when saving
         };
 
         public override Dictionary<string, string> DefaultValues
@@ -204,6 +210,12 @@ namespace FSO.Client
         public bool TS1ClassicUI { get; set; }
         public bool TS1SimInBackground { get; set; }
         public bool TS1AutoCenter { get; set; }
+        public int TS1TerrainDetail { get; set; }
+        public int TS1CharacterDetail { get; set; }
+        public bool TS1QuickTips { get; set; }
+        public bool TS1AutoSnapshot { get; set; }
+        public bool TS1LivePIP { get; set; }
+        public bool TS1ExportHTML { get; set; }
 
         public static int TARGET_COMPAT_STATE = 2;
     }
