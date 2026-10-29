@@ -529,6 +529,7 @@ namespace FSO.LotView.Components
             }
 
             grassDensity *= GrassDensityScale;
+            grassScale *= 1 << (2 - Math.Max(0, Math.Min(2, WorldConfig.Current.TerrainDetail))); //TS1's Terrain Detail: fewer, wider spaced layers
             var primitives = Bp.FloorGeom.SetGrassIndices(device, Effect, world);
 
             var parallax = false;
@@ -820,6 +821,7 @@ namespace FSO.LotView.Components
             float grassDensity = 0.43f;
 
             grassDensity *= GrassDensityScale;
+            grassScale *= 1 << (2 - Math.Max(0, Math.Min(2, WorldConfig.Current.TerrainDetail))); //TS1's Terrain Detail: fewer, wider spaced layers
             var primitives = Bp.FloorGeom.SetGrassIndices(device, Effect, world);
 
             if (floors.Contains(0) && primitives > 0 && _3D == _3d)

@@ -234,7 +234,10 @@ namespace FSO.LotView.Components
                 if ((DisplayFlags & AvatarDisplayFlags.ShowAsGhost) > 0) col = new Color(32, 255, 96) * 0.66f;
                 else if (IsDead) col = new Color(255, 255, 255, 64);
 
-                Avatar.LightPositions = (WorldConfig.Current.AdvancedLighting)?CloseLightPositions(Position):null;
+                //TS1's Character Detail: no lights at low, the nearest at medium
+                var detail = WorldConfig.Current.CharacterDetail;
+                Avatar.LightPositions = (WorldConfig.Current.AdvancedLighting && detail > 0)?CloseLightPositions(Position):null;
+                if (detail == 1 && Avatar.LightPositions?.Count > 1) Avatar.LightPositions = Avatar.LightPositions.GetRange(0, 1);
                 var newWorld = Matrix.CreateRotationY((float)(Math.PI - RadianDirection)) * this.World;
                 if (Scale != 1f) newWorld = Matrix.CreateScale(Scale) * newWorld;
                 DrawAvatarMesh(device, world, newWorld, col);

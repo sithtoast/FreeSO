@@ -1088,6 +1088,7 @@ namespace FSO.SimAntics
         TSOTimeout,
         TS1LotChange,
         TS1BuildBuyChange,
+        TS1SpecialEffect, //data: VMSpecialEffectEvent
         TSOUpgraded
     }
 }

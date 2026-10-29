@@ -47,6 +47,14 @@ namespace FSO.LotView
         public int AA = 0;
         public bool Directional = true;
         public bool Complex = false;
+        /// <summary>
+        /// TS1's Terrain Detail: how many layers of grass blades are drawn, from 0 (a quarter) to 2 (all).
+        /// </summary>
+        public int TerrainDetail = 2;
+        /// <summary>
+        /// TS1's Character Detail: how many nearby lights shade the Sims (with advanced lighting), from 0 (none) to 2 (all).
+        /// </summary>
+        public int CharacterDetail = 2;
 
         private bool _EnableTransitions = false;
         public bool EnableTransitions
