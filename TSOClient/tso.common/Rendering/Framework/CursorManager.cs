@@ -40,6 +40,11 @@ namespace FSO.Common.Rendering.Framework
         LiveObject4Star,
         LiveObject5Star,
         LiveObjectSpecial,
+
+        //TS1's neighbourhood: moving a family in, evicting, and somewhere it can't do either
+        MoveIn,
+        Bulldoze,
+        NoDrop,
     }
 
     /// <summary>
@@ -73,6 +78,15 @@ namespace FSO.Common.Rendering.Framework
                 CurrentCursor = type;
                 Mouse.SetCursor(m_CursorMap[type].MouseCursor);
             }
+        }
+
+        /// <summary>
+        /// Adds or replaces a cursor, such as one from the game's own files in place of the system arrow.
+        /// </summary>
+        public void SetCursorGroup(CursorType type, CursorGroup group)
+        {
+            m_CursorMap[type] = group;
+            if (CurrentCursor == type) Mouse.SetCursor(group.MouseCursor);
         }
 
         public Dictionary<CursorType, string> GenMap()
