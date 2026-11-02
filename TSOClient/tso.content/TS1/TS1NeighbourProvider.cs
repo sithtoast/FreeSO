@@ -142,15 +142,17 @@ namespace FSO.Content.TS1
         public void AddMissingNeighbors()
         {
             var objs = (TS1ObjectProvider)ContentManager.WorldObjects;
-            var missing = objs.PersonGUIDs.Where(x => !Neighbors.Entries.Any(y => y.GUID == x)).Select(x => objs.Get(x));
+            //(an object that doesn't load is skipped; one from an archive may have no file name, so it uses its label)
+            var missing = objs.PersonGUIDs.Where(x => !Neighbors.Entries.Any(y => y.GUID == x)).Select(x => objs.Get(x)).Where(x => x != null);
             foreach (var obj in missing)
             {
                 var id = Neighbors.GetFreeID();
+                var file = obj.Resource?.Name;
                 Neighbors.AddNeighbor(new Neighbour()
                 {
                     NeighbourID = id,
                     GUID = (uint)obj.GUID,
-                    Name = Path.GetFileName(obj.Resource.Name).ToLowerInvariant().Replace(".iff", ""),
+                    Name = (file != null) ? Path.GetFileName(file).ToLowerInvariant().Replace(".iff", "") : (obj.OBJ?.ChunkLabel ?? "").ToLowerInvariant(),
                     PersonData = PreparePersonDataFromObject((uint)obj.GUID),
                     PersonMode = 9,
                     Relationships = new Dictionary<int, List<short>>()

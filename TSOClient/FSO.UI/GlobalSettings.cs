@@ -130,6 +130,7 @@ namespace FSO.Client
             { "TS1AutoSnapshot", "false" }, //Simitone: photograph special events for the family album
             { "TS1LivePIP", "false" }, //Simitone: show special events in a picture in picture window
             { "TS1ExportHTML", "false" }, //Simitone: write the family web pages when saving
+            { "TS1Neighbourhood", "0" }, //Simitone: the neighbourhood last played, 0 for UserData, 1 to 7 for UserData2 to UserData8
         };
 
         public override Dictionary<string, string> DefaultValues
@@ -216,6 +217,7 @@ namespace FSO.Client
         public bool TS1AutoSnapshot { get; set; }
         public bool TS1LivePIP { get; set; }
         public bool TS1ExportHTML { get; set; }
+        public int TS1Neighbourhood { get; set; }
 
         public static int TARGET_COMPAT_STATE = 2;
     }
